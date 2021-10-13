@@ -404,3 +404,33 @@ else if (!global.CBOR)
   global.CBOR = obj;
 
 })(this);
+
+function decodeUplink(input) {
+  var warnings = [];
+  var data = {};
+  try {
+    data = CBOR.decode(input.bytes);
+  } catch (error) {
+    warnings.push(error);
+  }
+  return {
+    data: data,
+    warnings: warnings
+  };
+}
+
+/*
+  var events = {
+    1: "setup",
+    2: "interval",
+    3: "motion",
+    4: "button"
+  };
+  data.event = events[input.fPort];
+  data.battery = (input.bytes[0] << 8) + input.bytes[1];
+  data.light = (input.bytes[2] << 8) + input.bytes[3];
+  data.temperature = (((input.bytes[4] & 0x80 ? input.bytes[4] - 0x100 : input.bytes[4]) << 8) + input.bytes[5]) / 100;
+  if (data.temperature < -10) {
+    warnings.push("it's cold");
+  }
+*/
