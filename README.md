@@ -1,4 +1,4 @@
-# The Things Network Payload Decoder for Concise Binary Object Representation (CBOR)
+# The Things Network Payload Formatter for Concise Binary Object Representation (CBOR)
 
 See [`cbor.js`](cbor.js)
 

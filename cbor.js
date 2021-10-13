@@ -405,6 +405,7 @@ else if (!global.CBOR)
 
 })(this);
 
+//  The Things Network Payload Formatter for CBOR
 function decodeUplink(input) {
   var warnings = [];
   var data = {};  
