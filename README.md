@@ -1,8 +1,22 @@
 # The Things Network Payload Formatter for Concise Binary Object Representation (CBOR)
 
-See [`cbor.js`](cbor.js)
+Copy and paste [`cbor.js`](cbor.js) into the JavaScript Payload Formatter for The Things Network.
+
+Based on...
+
+https://github.com/paroga/cbor-js
 
 # MQTT Log
+
+This MQTT command...
+
+```bash
+## Change au1.cloud.thethings.network to our MQTT Public Address
+## Change luppy-application@ttn to our MQTT Username
+mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d
+```
+
+Shows this MQTT Message containing the Decoded Payload...
 
 ```json
 {
@@ -81,6 +95,22 @@ See [`cbor.js`](cbor.js)
 
 # Storage Log
 
+This Storage API command...
+
+```bash
+## Change au1.cloud.thethings.network to our Storage API Public Address
+## Change $YOUR_APPLICATION_ID to our Application ID
+## Change $YOUR_API_KEY to our API Key
+curl \
+  -G "https://au1.cloud.thethings.network/api/v3/as/applications/$YOUR_APPLICATION_ID/packages/storage/uplink_message" \
+  -H "Authorization: Bearer $YOUR_API_KEY" \
+  -H "Accept: text/event-stream" \
+  -d "limit=1" \
+  -d "order=-received_at"
+```
+
+Shows this Stored Message containing the Decoded Payload...
+
 ```json
 {
     "result": {
@@ -144,58 +174,4 @@ See [`cbor.js`](cbor.js)
         }
     }
 }
-```
-
-cbor-js
-=======
-
-The Concise Binary Object Representation (CBOR) data format ([RFC 7049](http://tools.ietf.org/html/rfc7049)) implemented in pure JavaScript.
-
-[![Build Status](https://api.travis-ci.org/paroga/cbor-js.svg)](https://travis-ci.org/paroga/cbor-js)
-[![Coverage Status](https://coveralls.io/repos/paroga/cbor-js/badge.svg?branch=master)](https://coveralls.io/r/paroga/cbor-js?branch=master)
-[![Dependency status](https://david-dm.org/paroga/cbor-js/status.svg)](https://david-dm.org/paroga/cbor-js#info=dependencies&view=table)
-[![Dev Dependency Status](https://david-dm.org/paroga/cbor-js/dev-status.svg)](https://david-dm.org/paroga/cbor-js#info=devDependencies&view=table)
-[![Selenium Test Status](https://saucelabs.com/buildstatus/paroga-cbor-js)](https://saucelabs.com/u/paroga-cbor-js)
-
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/paroga-cbor-js.svg)](https://saucelabs.com/u/paroga-cbor-js)
-
-API
----
-
-The `CBOR`-object provides the following two functions:
-
-CBOR.**decode**(*data*)
-> Take the ArrayBuffer object *data* and return it decoded as a JavaScript object.
-
-CBOR.**encode**(*data*)
-> Take the JavaScript object *data* and return it encoded as a ArrayBuffer object.
-
-Usage
------
-
-Include `cbor.js` in your or HTML page:
-```html
-<script src="path/to/cbor.js" type="text/javascript"></script>
-```
-
-Then you can use it via the `CBOR`-object in your code:
-```javascript
-var initial = { Hello: "World" };
-var encoded = CBOR.encode(initial);
-var decoded = CBOR.decode(encoded);
-```
-After running this example `initial` and `decoded` represent the same value.
-
-### Combination with WebSocket
-
-The API was designed to play well with the `WebSocket` object in the browser:
-```javascript
-var websocket = new WebSocket(url);
-websocket.binaryType = "arraybuffer";
-...
-websocket.onmessage = function(event) {
-  var message = CBOR.decode(event.data);
-};
-...
-websocket.send(CBOR.encode(message));
 ```
