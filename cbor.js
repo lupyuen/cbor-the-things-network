@@ -1,3 +1,5 @@
+//  The Things Network Payload Formatter for CBOR
+//  Based on https://github.com/paroga/cbor-js/blob/master/cbor.js
 /*
  * The MIT License (MIT)
  *
@@ -405,10 +407,13 @@ else if (!global.CBOR)
 
 })(this);
 
-//  The Things Network Payload Formatter for CBOR
+//  Decode the CBOR Payload in the Uplink Message
 function decodeUplink(input) {
-  var warnings = [];
+  //  Data and warnings to be returned to The Things Network
   var data = {};  
+  var warnings = [];
+
+  //  Catch any exceptions and return them as warnings.
   try {
     //  Convert payload bytes to ArrayBuffer
     var array = new Uint8Array(input.bytes);
@@ -416,9 +421,17 @@ function decodeUplink(input) {
 
     //  Decode the ArrayBuffer
     data = CBOR.decode(buf);
+
+    //  `data` contains Key-Value Pairs like...
+    //  { "l": 4000, "t": 4656 }
+
   } catch (error) {
+    //  Catch any exceptions and return them as warnings.
+    //  The Things Network will drop the message if we return errors.
     warnings.push(error);
   }
+
+  //  Return the decoded data
   return {
     data: data,
     warnings: warnings
