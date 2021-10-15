@@ -1,8 +1,10 @@
 # The Things Network Payload Formatter for Concise Binary Object Representation (CBOR)
 
+To decode CBOR Message Payloads in The Things Network:
+
 Copy and paste [`cbor.js`](cbor.js) into the JavaScript Payload Formatter for The Things Network.
 
-We shall use the CBOR Payload Formatter to ingest CBOR Sensor Data (MQTT) into Prometheus...
+We shall use this CBOR Payload Formatter to ingest CBOR Sensor Data (MQTT) into Prometheus...
 
 https://github.com/hikhvar/mqtt2prometheus
 
