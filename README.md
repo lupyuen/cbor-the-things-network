@@ -8,7 +8,7 @@ We shall use this CBOR Payload Formatter to ingest CBOR Sensor Data (MQTT) into 
 
 https://github.com/hikhvar/mqtt2prometheus
 
-More about The Things Network Payload Formatters...
+More about Payload Formatters for The Things Network...
 
 https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/
 
