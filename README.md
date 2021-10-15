@@ -2,7 +2,19 @@
 
 Copy and paste [`cbor.js`](cbor.js) into the JavaScript Payload Formatter for The Things Network.
 
-Based on...
+We shall use the CBOR Payload Formatter to ingest CBOR Sensor Data (MQTT) into Prometheus...
+
+https://github.com/hikhvar/mqtt2prometheus
+
+More about The Things Network Payload Formatters...
+
+https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/
+
+Helium also supports Payload Formatters...
+
+https://docs.helium.com/use-the-network/console/functions/
+
+This CBOR Payload Formatter is based on...
 
 https://github.com/paroga/cbor-js
 
