@@ -1,5 +1,7 @@
 # The Things Network Payload Formatter for Concise Binary Object Representation (CBOR)
 
+![The Things Network Payload Formatter for CBOR](https://lupyuen.github.io/images/payload-flow2.jpg)
+
 To decode CBOR Message Payloads in The Things Network:
 
 Copy and paste [`cbor.js`](cbor.js) into the JavaScript Payload Formatter for The Things Network.
