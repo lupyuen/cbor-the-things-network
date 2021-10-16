@@ -415,7 +415,9 @@ function decodeUplink(input) {
 
   //  Catch any exceptions and return them as warnings.
   try {
-    //  Convert payload bytes to ArrayBuffer
+    //  Convert payload bytes to ArrayBuffer.
+    //  `input.bytes` contains CBOR bytes like...
+    //  [ 0xa2, 0x61, 0x74, 0x19, 0x12, 0x3d, 0x61, 0x6c, 0x19, 0x0f, 0xa0 ]
     var array = new Uint8Array(input.bytes);
     var buf = array.buffer;
 
@@ -423,7 +425,7 @@ function decodeUplink(input) {
     data = CBOR.decode(buf);
 
     //  `data` contains Key-Value Pairs like...
-    //  { "l": 4000, "t": 4656 }
+    //  { "l": 4000, "t": 4669 }
 
   } catch (error) {
     //  Catch any exceptions and return them as warnings.
